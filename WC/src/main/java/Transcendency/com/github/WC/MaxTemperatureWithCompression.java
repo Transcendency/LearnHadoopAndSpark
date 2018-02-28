@@ -29,10 +29,19 @@ public class MaxTemperatureWithCompression {
 		conf.setOutputKeyClass(Text.class);
 		conf.setOutputValueClass(IntWritable.class);
 		
+//		// compress map output get gain performance
+//		conf.setCompressMapOutput(true);
+//		conf.setMapOutputCompressorClass(GzipCodec.class);
+		
+//		conf.setBoolean("mapred.compress.map.output", true);
+//		conf.setClass("mapred.map.output.compression.codec", GzipCodec.class, CompressionCodec.class);
+
+		// compress output
 		conf.setBoolean("mapred.output.compress", true);
 		conf.setClass("mapred.output.compression.codec", GzipCodec.class, CompressionCodec.class);
+		
 		conf.setMapperClass(MaxTemperatureMapper.class);
-		conf.setCombinerClass(MaxTemperatureReducer.class);
+//		conf.setCombinerClass(MaxTemperatureReducer.class);
 		conf.setReducerClass(MaxTemperatureReducer.class);
 		
 		JobClient.runJob(conf);
