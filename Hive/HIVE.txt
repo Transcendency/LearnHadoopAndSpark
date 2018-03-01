@@ -77,3 +77,47 @@ SELECT * FROM system_log;
 
 hdfs dfs -ls /data
 hdfs dfs -ls /hive/warehouse
+
+CREATE TABLE error_log
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+STOREDS AS TEXTFILE LOCATION '/data/error_log'
+AS
+SELECT datetime, source, event_id, details
+FROM system_log
+WHERE level = 'Error';
+
+- Query data using the SELECT HiveQL Statement
+SELECT Col1, SUM(Col2) AS TotalCol2
+FROM MyTable
+WHERE Col3 = 'ABC' AND Col4 < 10
+GROUP BY Col1
+ORDER BY Col4;
+
+Hive translates the query into jobs and applies the table schema to the underlying 
+data files
+Views are named queries that abstract underlying tables
+CREATE VIEW v_SummarizaedData
+AS
+SELECT col1, SUM(col2) AS TotalCol2
+FROM mytable
+GROUP BY col1;
+
+SELECT col1, TotalCol2
+FROM v_SummarizedData;
+
+SHOW TABLES;
+
+SELECT datetime, level, event_id
+FROM system_log
+LIMIT 10;
+
+SELECT unix_timestamp(datetime, 'dd/MM/yyyy hh:mm:ss') AS time_stamp, level, event_id
+FROM system_log;
+
+SELECT from_unixtime(unix_timestamp(date, 'dd/MM/yyyy hh:mm:ss')) AS datetime, level, event_id
+FROM system_log;
+
+CREATE VIEW v_system_log
+AS
+SELECT from_unixtime(unix_timestamp(date, 'dd/MM/yyyy hh:mm:ss')) AS datetime, level, event_id
+FROM system_log;
