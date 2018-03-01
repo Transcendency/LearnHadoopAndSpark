@@ -18,3 +18,15 @@ CREATE EXTERNAL TABLE table3
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ';
 STORED AS TEXTFILE LOCATION '/data/table2';
 [External table (folders and files are left intact in Azure blob when the table is dropped)]
+
+Hive data types:
+- Numeric
+	- Intefers: TINYINT, SMALLINT, INT, BIGINT
+	- Fractinoal: FLOAT, DOUBLE, DECIMAL
+- Character
+	- STRING, VARCHAR, CHAR
+- Date/Time
+	-TIMESTAMP
+	-DATE
+- Specail
+	- BOOLEAN, BINARY, ARRAY, MAP, STRUCT, UNIONTYPE
