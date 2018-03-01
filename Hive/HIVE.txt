@@ -30,3 +30,50 @@ Hive data types:
 	-DATE
 - Specail
 	- BOOLEAN, BINARY, ARRAY, MAP, STRUCT, UNIONTYPE
+
+Save data files in table folders (or create table on existing files!)
+- put myfile.txt /data/table1
+Use the LOAD statement
+- LOAD DATA [LOCAL] INPATH '/data/source' INTO TABLE MyTable;
+Use the INSERT Statement (not insert records but insert existing tables or the results of query)
+- INSERT INTO TABLE Table2 SELECT Col1, UPPER(col2), FROM Table1;
+Use a CREATE TABLE AS SELECT (CTAS) statement
+- CREATE TABLE Table3 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' SOTRED AS TEXTFILE LOCATION
+'/data/summarytable' AS SELECT Col1, SUM(Col2) As Total FROM Table1 GROUP By Col1
+
+
+HIVE DEMO
+CREATE EXTERNAL TABLE staged_log
+(level STRING,
+datetime STRING,
+source STRING,
+event_id INT,
+category STRING,
+details STRING)
+ROW FORMAT DELIMITED FIELDS TRMINATED BY '\t'
+STORED AS TEXTFILE LOCATION '/data/staged_log';
+
+SELECT * FROM staged_log;
+
+SHOW TABLES;
+
+LOAD DATA INPATH '/data/system_log.txt' INTO TABLE staged_log;
+
+SELECT * FROM staged_log;
+
+CREATE TABLE system_log
+(level STRING,
+datetime STRING,
+source STRING,
+event_id INT,
+category STRING,
+details STRING);
+
+INSERT INTO TABLE system_log
+SELECT * FROM staged_log
+WHERE event_id IS NOT NULL;
+
+SELECT * FROM system_log;
+
+hdfs dfs -ls /data
+hdfs dfs -ls /hive/warehouse
