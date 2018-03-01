@@ -1,0 +1,11 @@
+-- Load comma-delimited source data
+Readings = LOAD '/weather/data.txt' USING PigStorage(',') AS (date:chararray, temp:long);
+
+-- Group the tuples by date
+GroupedReadings = GROUP Readings By date;
+
+-- Get the average teamp value for each date grouping
+GroupedAvgs = FOREACH GroupedReadings GENERATE group, AVG(Readings.temp) AS avgtemp;
+
+-- Ungroup the dates with the average temp
+AvgWeather = FOREACH GroupedAvgs GENERATE FLATTEN(group) as date, avgtemp;
