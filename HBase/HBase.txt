@@ -40,3 +40,19 @@ deleteall 'readings' '4'
 ## delete table
 disable 'readings'
 drop 'readings'
+
+
+## build load data into hbase table
+1. upload data to HDFS
+	- in Azure Storage
+2. Import into a StoreFile
+3. Load the storefile to an HBase table
+
+## Query data with hive
+How to we query hbase table with hive
+CREATE EXtERNAL TABLE hivetable
+(key STRING, col1 STRING, col2 STRINg)
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES
+('hbase.columns.mappin' = ':key, cf:col1, cf:col2')
+TALPROPERTIES('hbase.table.name' = 'hbtable')
