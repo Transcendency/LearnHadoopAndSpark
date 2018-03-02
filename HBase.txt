@@ -1,8 +1,0 @@
-what is Apache HBase?
-How is HBase Supported in Azure HDInsight?
-How Does HBase Store Data?
-How do you work with an HBase Table?
-How do you bulk load data into hbase?
-how do you query hbase tables from hive?
-How to you query hbase tables using SQL?
-How do you build an Hbase client?

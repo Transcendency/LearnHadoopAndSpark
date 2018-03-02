@@ -1,0 +1,20 @@
+what is Apache HBase?
+How is HBase Supported in Azure HDInsight?
+How Does HBase Store Data?
+How do you work with an HBase Table?
+How do you bulk load data into hbase?
+how do you query hbase tables from hive?
+How to you query hbase tables using SQL?
+How do you build an Hbase client?
+
+Hbase
+A low-latency, NoSQL database build on Hadoop
+Modeled on Google's BigTable
+Hbase stores data in StoreFiles on HDFS
+
+Introduction to Hbase tables.
+Data is stored as key-value pairs
+Table schema arranges values into column families
+Column family schema is flexible
+Columns are row-specific
+cells in a table are versioned.
