@@ -32,3 +32,11 @@ get 'readings', '2' [get all the columns for the specific row]
 get 'readings', '2' {COLUMN => {rading:value}}
 ## time range
 get 'readings', '2', {COLUMN => {reading:value}}
+## delete the specific cell
+delete 'readings', '2' 'sensor:location'
+## delete the row
+deleteall 'readings' '4'
+
+## delete table
+disable 'readings'
+drop 'readings'
