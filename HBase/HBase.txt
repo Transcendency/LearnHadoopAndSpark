@@ -56,3 +56,22 @@ STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
 WITH SERDEPROPERTIES
 ('hbase.columns.mappin' = ':key, cf:col1, cf:col2')
 TALPROPERTIES('hbase.table.name' = 'hbtable')
+
+## Query data with SQL
+Apache Phoenix
+- Relational database engine build on Hbase
+- included in Azure HDInsight
+
+JDBC Interface
+- Clients connect using JDBC
+- SQLLine client included in HDInsight
+
+
+Build Client Application
+## using java
+org.apache.hadoop.hbase._
+- java libraries for Hbase
+	- HBaseConfiguration
+	- HTable
+	- Put, Get, Scan
+
