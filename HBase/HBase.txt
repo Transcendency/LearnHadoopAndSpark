@@ -18,3 +18,17 @@ Table schema arranges values into column families
 Column family schema is flexible
 Columns are row-specific
 cells in a table are versioned.
+
+Working with Hbase tables
+create 'readings', 'sensor', 'reading'
+put 'readings', '1', 'sendor:id', 'Sensor1'
+put 'readings', '1', 'reading:datetime', '2015-01-01'
+put 'readings', '1', 'reading:value', '125.9'
+put 'readings', '2', 'reading:value', '152.3'
+
+if the column value exsits then the cell updated.
+get 'readings', '2' [get all the columns for the specific row]
+## specific row
+get 'readings', '2' {COLUMN => {rading:value}}
+## time range
+get 'readings', '2', {COLUMN => {reading:value}}
