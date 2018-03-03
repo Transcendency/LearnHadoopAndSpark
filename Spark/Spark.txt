@@ -4,3 +4,11 @@ How do I work with data in Spark?
 How do I write Spark programs?
 What are notebooks?
 How do I query data in Spark using SQL?
+What is Spark Streaming?
+
+
+What is Apache Spark?
+	- A fast, general purpose computation engine that supports
+	in-memory operations
+	- A unified stack for interactive, streaming, and predictive analysis
+	- Can run in Hadoop clusters
