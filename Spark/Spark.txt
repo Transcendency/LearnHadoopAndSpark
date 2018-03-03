@@ -12,3 +12,11 @@ What is Apache Spark?
 	in-memory operations
 	- A unified stack for interactive, streaming, and predictive analysis
 	- Can run in Hadoop clusters
+
+Working with RDDs in Spark
+	- The core abstraction for data in Spark the resilient distributed dataset (RDD)
+	- An RDD represents a collection of items
+	that can be distribted across compute nodes
+	- APIs for working with RDDs are provided for Java, Python, and Scala
+		- HDInsight distribution includes Python and Scala shells
+
