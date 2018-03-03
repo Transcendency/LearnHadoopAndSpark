@@ -9,3 +9,26 @@ GroupedAvgs = FOREACH GroupedReadings GENERATE group, AVG(Readings.temp) AS avgt
 
 -- Ungroup the dates with the average temp
 AvgWeather = FOREACH GroupedAvgs GENERATE FLATTEN(group) as date, avgtemp;
+
+-- Sort the results by date
+SortedResults = ORDER AvgWeather By date ASC;
+
+-- Save the results in the /weather/summary folder
+STORE SortedResults INTO '/weather/summary';
+
+Common Pig Latin Opearitons
+- LOAD
+- FILTER
+- FOR EACH ... GENERATE
+- ORDER
+- JOIN
+- GROUP
+- FLATTEN
+- LIMIT
+- DUMP
+- STORE (sotre date in system)
+
+Pig generates Map and Reuce operations from Pig Latin
+Jobs are generated on:
+- DUMP
+- STORE

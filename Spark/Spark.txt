@@ -1,0 +1,6 @@
+What is Apache Spark?
+How is Spark supported in Azure HDinsight?
+How do I work with data in Spark?
+How do I write Spark programs?
+What are notebooks?
+How do I query data in Spark using SQL?
