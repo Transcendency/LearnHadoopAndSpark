@@ -53,3 +53,68 @@ lstRDD = sc.parallelize(["A", "B", "C"])
 	- No excution occurs until an action
 	- RDDs are recomputed with each action
 		- use persist action to retain in memory
+
+Programing Spark RDDs
+How do I write spark programs
+- Most operaions invovle passing a function to a transfomation or action
+- Functions can be:
+	- Explicitly declared
+	- Passed inline
+		- Python uses lambda keyword
+
+RDD.filter(function
+def containMSTag(txt):
+	return "#ms" in txt
+
+msTwts = txtRDD.filter(containsMSTag)
+# Python
+msTwts = txtRDD.filter(lambda txt: "ms" in txt)
+
+Common Transformations:
+- filter: Creates a filtered RDD
+- flatMap: Applies a function to each element that returns multiple elements into a new RDD
+- map: Applies a function to each element that returns an element in a new RDD
+- reduceByKey: Aggregates values for each key in a key-value pair RDD
+
+txt = sc.parallelize(["the owl and the pussycat", "went to sea"]) 
+
+owTxt = txt.filter(lambda t: "owl" in t)
+{["the owl and the pussycat"]}
+
+words = owlTxt.flatMap(lambda t: t.split(" "))
+{["the"], ["owl"], ["and"], ["the"], ["pussycat"]}
+
+kv = words.map(lambda key: (key, 1))
+{["the", 1], ["owl", 1] ...}
+
+counts = kv.reduceByKey(lambda a, b: a+b)
+{["the", 2], .... ["cat", 1]}
+
+kv = words.map(lambda key: (key, 1))
+
+Common Actions:
+- Reduce: Aggregates the elements of an RDD using a function that takes two arguments
+- coutn: Returns the number of elements in the RDD
+- first: Returns the first element in the RDD
+- collect: Retuns the RDD as an array to the driver program
+saveAsTextFile: Saves the RDD as a text file in the specified path
+
+nums = sc.parallelize([1, 2, 3, 4])
+{[1], [2], [3], [4]}
+nums.reduce(lambda x, y: x+y)
+10
+nums.count()
+4
+nums.first()
+1
+nums.collect()
+[1,2,3,4]
+nums.saveAsTextFile("/results")
+
+To create a standalone applicatoin:
+- Create a Python script
+- Use Maven to build Scala or Java apps
+- Include code to create Spark context
+
+To run a standalone application:
+	- use spark-submit script
