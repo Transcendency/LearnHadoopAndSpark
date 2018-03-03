@@ -20,3 +20,36 @@ Working with RDDs in Spark
 	- APIs for working with RDDs are provided for Java, Python, and Scala
 		- HDInsight distribution includes Python and Scala shells
 
+Distributed processing architecture consist of
+	- A driver program
+	- One or more worker nodes
+The driver program uses a spark context to connect to cluster ..
+.. and uses worker nodes to perform operations on RDDs
+
+To Create a Spark Context:
+	1. Create a configuration for your cluster and application
+	2. Use the configuration to create a context
+	(Spark shells have one pre-created)
+
+## Cluster URL application name
+cfg = SparkConf().setMaster("local").setAppName("App")
+sc = SparkContext(conf = cfg)
+# Path to file
+txtRDD = sc.textFile("/data/tweets.txt")
+
+To create am RDD
+	- Load from a source
+		- Text file, JSON, XML, etc
+	- Parallelize a collection
+
+lstRDD = sc.parallelize(["A", "B", "C"])
+
+- RDD operations include
+	- Transformations
+		- Create a new RDD by transforming an exsiting one
+	- Actions
+		- Return results to the river program or an output file
+- Spark uses Lazy Evaluation
+	- No excution occurs until an action
+	- RDDs are recomputed with each action
+		- use persist action to retain in memory
