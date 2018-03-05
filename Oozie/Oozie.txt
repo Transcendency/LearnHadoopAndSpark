@@ -1,1 +1,12 @@
 What is Oozie?
+A workflow engine for actions in a Hadoop cluster
+- Mapreduce
+- Hive
+- Pig
+- Others
+
+Supported parallel worksteams and conditional braching
+
+Oozie workflow file
+	- XML file defining workflow actions
+	- Scripts file used by workflow actions - for example, HiveQL or Pig Latin
