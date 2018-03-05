@@ -8,3 +8,13 @@ Python is (relatively) simple scripting language - ideal for UDFs
  - intutive sytanx
  - Dynamic typing
  - Interpreted execution
+
+ Pig natively supports Jython
+ - Define the output schema as Pig bag
+ - Declare a Python function that receive an input parameter from Pig
+ - Return results as fields based on the output schema
+
+ @outputSchema("result: {(a: chararray, b:int)}")
+ Def myfunction(i):
+ 	...
+ 	return a, b
