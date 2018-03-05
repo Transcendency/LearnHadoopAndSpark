@@ -36,4 +36,6 @@ Jobs are generated on:
 Running Pig Scripts
 1. Save a Pig Latin script file
 2. Run the script using Pig (pig wasb:///scripts/myscript.pig)
-3. 
+3. Consume results using Azure storage client
+	- For example: Excel or PowerBI
+	- Default output does not include schema - just data
