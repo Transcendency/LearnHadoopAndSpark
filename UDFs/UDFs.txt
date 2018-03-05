@@ -26,3 +26,18 @@ Python is (relatively) simple scripting language - ideal for UDFs
  src = LOAD '/data/source' AS (row:chararray);
 
  res = FOREACH src GENERATE myscript.myfunction(row);
+
+ Python UDFs and Hive
+ Hive exchanges data with python using streaming technique
+ - Rows from Hive are passed to python throw STDOUT
+ line = sys.stdin.readline()
+ ...
+ print processed_row
+
+ Use the Hive TRANSFORM statement to invoke UDF
+ add file wsfb:///scripts/myscript.py
+ SELECT TRANSFORM (col1, col2, col3)
+ 	USING 'python myscript.py'
+ 	AS (col1 String, col2 int, col3 String)
+ FROM mytale
+ ORDER BY col1;
