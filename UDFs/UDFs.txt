@@ -18,3 +18,11 @@ Python is (relatively) simple scripting language - ideal for UDFs
  Def myfunction(i):
  	...
  	return a, b
+
+ Use the Pig FOREACH .... GENERATE statement to invoke UDF
+
+ Register 'wasb:///scripts/myscript.py' using jython as myscript;
+
+ src = LOAD '/data/source' AS (row:chararray);
+
+ res = FOREACH src GENERATE myscript.myfunction(row);
