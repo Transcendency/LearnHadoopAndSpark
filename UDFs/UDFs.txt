@@ -3,3 +3,8 @@ User defined functions (UDFs) extend the capabilities of Hive and Pig
 Simpler than writing custom mapreduce components
 
 Can be implemented using many languages, for example Java C# and python
+
+Python is (relatively) simple scripting language - ideal for UDFs
+ - intutive sytanx
+ - Dynamic typing
+ - Interpreted execution
