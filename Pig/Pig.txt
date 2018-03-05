@@ -32,3 +32,6 @@ Pig generates Map and Reuce operations from Pig Latin
 Jobs are generated on:
 - DUMP
 - STORE
+
+Running Pig Scripts
+1. Save a Pig Latin script file
